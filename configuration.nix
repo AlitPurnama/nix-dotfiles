@@ -8,7 +8,11 @@
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./modules/nixos/stylix.nix
+    ./modules/nixos/podman.nix
+    # ./modules/nixos/files.nix
   ];
+
+  podman.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -60,7 +64,7 @@
     isNormalUser = true;
     description = "Alit Purnama";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    # packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
 
