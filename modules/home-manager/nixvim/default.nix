@@ -14,6 +14,7 @@ in {
     snippets.enable = true;
     formatters.enable = true;
     files.enable = true;
+    mini.enable = true;
     programs.nixvim = {
       enable = true;
       inherit opts globals;

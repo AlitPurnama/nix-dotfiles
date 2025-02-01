@@ -5,5 +5,7 @@
     ./completion.nix
     ./snippets.nix
     ./formatters.nix
+    ./files.nix
+    ./mini.nix
   ];
 }
