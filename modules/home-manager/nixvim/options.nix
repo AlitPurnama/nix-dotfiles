@@ -13,6 +13,8 @@
 
       autoindent = true;
       smartindent = true;
+
+      wrap = false;
     };
   };
 }
