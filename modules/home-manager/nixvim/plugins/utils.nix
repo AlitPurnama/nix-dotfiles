@@ -7,6 +7,18 @@ in {
     programs.nixvim.plugins = {
       # Hardtime NVIM
       hardtime.enable = true;
+      notify.enable = true;
+      noice.enable = true;
+      snacks = {
+        enable = true;
+        settings = {
+          notifier.enabled = true;
+          lazygit = {
+            enabled = true;
+            configure = true;
+          };
+        };
+      };
     };
   };
 }
