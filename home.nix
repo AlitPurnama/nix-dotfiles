@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -24,15 +24,18 @@
 
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  home.packages = with pkgs;[
+  home.packages = with pkgs; [
     goofcord
     prismlauncher
-    gabutdm
     spotify
+    motrix
+    mcaselector
+    pfetch-rs
+    ani-cli
+    zathura
   ];
 
-  home.file = {
-  };
+  home.file = { };
 
   home.sessionVariables = {
     # EDITOR = "emacs";
@@ -47,12 +50,12 @@
     bash.enable = true;
   };
 
+  programs.tmux = { enable = true; };
+  programs.lazygit.enable = true;
+
   programs.home-manager.enable = true;
 
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-             "spotify"
-           ];
-
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [ "spotify" ];
 
 }
