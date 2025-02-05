@@ -7,5 +7,6 @@
     ./formatters.nix
     ./files.nix
     ./mini.nix
+    ./languages
   ];
 }
