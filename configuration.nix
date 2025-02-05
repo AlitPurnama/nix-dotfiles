@@ -93,13 +93,6 @@
     users = { "alit" = import ./home.nix; };
   };
 
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      # "*/2 * * * *      alit  ${pkgs.php84}/bin/php    /home/alit/Projects/oci-script/oci-arm-host-capacity/index.php >> /home/alit/Projects/oci-script/oci-arm-host-capacity/oci.log"
-    ];
-  };
-
   programs.steam = {
     enable = true;
     localNetworkGameTransfers.openFirewall = true;
@@ -109,12 +102,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  environment.systemPackages = with pkgs; [
-    # neovim
-    git
-    cloudflare-warp
-    mpv
-  ];
+  environment.systemPackages = with pkgs; [ git cloudflare-warp mpv ];
 
   systemd.packages = [ pkgs.cloudflare-warp ]; # for warp-cli
   systemd.targets.multi-user.wants = [ "warp-svc.service" ];
