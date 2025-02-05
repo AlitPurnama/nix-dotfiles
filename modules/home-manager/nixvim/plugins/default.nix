@@ -8,5 +8,6 @@
     ./files.nix
     ./mini.nix
     ./languages
+    ./utils.nix
   ];
 }
