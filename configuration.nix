@@ -1,18 +1,32 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { lib, inputs, pkgs, ... }:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
     ./hardware-configuration.nix
+    ./modules/nixos/kernel.nix
     ./modules/nixos/stylix.nix
     ./modules/nixos/podman.nix
-    # ./modules/nixos/files.nix
+    ./modules/nixos/protonvpn.nix
   ];
 
   podman.enable = true;
+  services.protonvpn = {
+    enable = true;
+    autostart = false;
+    interface = {
+      name = "levpn";
+      ip = "10.2.0.2/32";
+      privateKeyFile = "/home/alit/.dotfiles/secret/protonvpn";
+      dns = {
+        enable = true;
+        ip = "10.2.0.1";
+      };
+    };
+    endpoint = {
+      publicKey = "+tBxOtFy6U050wKXUHW16Ya8gzRVoAGdSZGQ2PokrGA=";
+      ip = "149.22.84.149";
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -21,6 +35,9 @@
   networking.hostName = "tenslime"; # Define your hostname.
 
   networking.networkmanager.enable = true;
+  networking.networkmanager.dns = "systemd-resolved";
+
+  services.resolved.enable = true;
 
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" "8.8.8.8" "8.8.4.4" ];
 
@@ -80,6 +97,13 @@
     ];
   };
 
+  programs.steam = {
+    enable = true;
+    localNetworkGameTransfers.openFirewall = true;
+    extraCompatPackages = with pkgs; [ proton-ge-bin ];
+  };
+  programs.steam.gamescopeSession.enable = true;
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   environment.systemPackages = with pkgs; [
@@ -93,7 +117,13 @@
   systemd.targets.multi-user.wants = [ "warp-svc.service" ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "cloudflare-warp" ];
+    builtins.elem (lib.getName pkg) [
+      "cloudflare-warp"
+      "steam"
+      "steam-original"
+      "steam-unwrapped"
+      "steam-run"
+    ];
 
   system.stateVersion = "24.05"; # Did you read the comment?
 
