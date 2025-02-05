@@ -31,6 +31,15 @@ in {
           };
         };
       };
+      telescope = {
+        enable = true;
+        settings = { };
+        extensions = {
+          file-browser.enable = true;
+          fzf-native.enable = true;
+          live-grep-args.enable = true;
+        };
+      };
     };
   };
 }
