@@ -7,7 +7,10 @@
     ./modules/nixos/stylix.nix
     ./modules/nixos/podman.nix
     ./modules/nixos/protonvpn.nix
+    ./modules/nixos/files.nix
   ];
+
+  files.enable = true;
 
   podman.enable = true;
   services.protonvpn = {
