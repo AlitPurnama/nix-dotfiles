@@ -2,19 +2,21 @@
 with lib;
 let
   cfg = config.nixvim;
-  opts = (import ./options.nix { inherit config; }).config.opts;
-  globals = (import ./options.nix { inherit config; }).config.globals;
+  opts = (import ./options.nix { }).config.opts;
+  globals = (import ./options.nix { }).config.globals;
 in {
-  imports = [ inputs.nixvim.homeManagerModules.nixvim ./plugins ];
+  imports = [ inputs.nixvim.homeManagerModules.nixvim ./plugins ./keymaps.nix ];
   options.nixvim.enable = mkEnableOption "Enable Nixvim";
   config = mkIf cfg.enable {
     lsp.enable = true;
+    keymaps.enable = true;
     completion.enable = true;
     treesitter.enable = true;
     snippets.enable = true;
     formatters.enable = true;
     files.enable = true;
     mini.enable = true;
+    utils.enable = true;
     programs.nixvim = {
       enable = true;
       inherit opts globals;
