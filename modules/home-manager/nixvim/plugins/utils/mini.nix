@@ -7,7 +7,8 @@ in {
   config = mkIf cfg.enable {
     programs.nixvim.plugins.mini = {
       enable = true;
-
+      modules = { icons = { }; };
+      mockDevIcons = true;
     };
   };
 }

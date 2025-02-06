@@ -20,6 +20,8 @@ in {
         pick.enabled = true;
         dashboard = {
           enabled = cfg.enableDashboard;
+          row = { __raw = "nil"; };
+          col = { __raw = "nil"; };
           preset = {
             keys = [
               {
@@ -66,13 +68,13 @@ in {
               cmd =
                 "${pkgs.ascii-image-converter}/bin/ascii-image-converter ~/.dotfiles/icons/le-rimuru.png -C -c";
               random = 10;
-              pane = 1;
+              pane = 2;
               indent = 4;
               height = 30;
             }
             {
               icon = " ";
-              pane = 2;
+              pane = 1;
               title = "Keymaps";
               section = "keys";
               padding = 1;
@@ -80,7 +82,7 @@ in {
             }
             {
               icon = " ";
-              pane = 2;
+              pane = 1;
               title = "Recent Files";
               section = "recent_files";
               padding = 1;
@@ -88,14 +90,14 @@ in {
             }
             {
               icon = " ";
-              pane = 2;
+              pane = 1;
               title = "Projects";
               section = "projects";
               padding = 1;
               indent = 3;
             }
             {
-              pane = 2;
+              pane = 1;
               icon = " ";
               title = "Git Status";
               section = "terminal";

@@ -2,6 +2,7 @@
 with lib;
 let cfg = config.utils;
 in {
+  imports = [ ./mini.nix ./snacks.nix ./snippets.nix ];
   options.utils.enable = mkEnableOption "Enable Utils Plugins";
   config = mkIf cfg.enable {
     programs.nixvim.plugins = {
@@ -9,16 +10,6 @@ in {
       hardtime.enable = true;
       notify.enable = true;
       noice.enable = true;
-      snacks = {
-        enable = true;
-        settings = {
-          notifier.enabled = true;
-          lazygit = {
-            enabled = true;
-            configure = true;
-          };
-        };
-      };
     };
   };
 }
