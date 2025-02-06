@@ -66,7 +66,7 @@ in {
             {
               section = "terminal";
               cmd =
-                "${pkgs.ascii-image-converter}/bin/ascii-image-converter ~/.dotfiles/icons/le-rimuru.png -C -c";
+                "${pkgs.ascii-image-converter}/bin/ascii-image-converter ~/.dotfiles/icons/rmu.png -C -c";
               random = 10;
               pane = 2;
               indent = 4;
