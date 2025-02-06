@@ -1,10 +1,10 @@
-{ inputs, lib, config, ... }:
+{ pkgs, inputs, lib, config, ... }:
 with lib;
 let
   cfg = config.nixvim;
-  opts = (import ./options.nix { }).config.opts;
-  globals = (import ./options.nix { }).config.globals;
-  clipboard = (import ./clipboard.nix { inherit pkgs; }).config.clipboard;
+  opts = (import ./options.nix { }).opts;
+  globals = (import ./options.nix { }).globals;
+  clipboard = (import ./clipboard.nix { inherit pkgs; }).clipboard;
 in {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ./plugins ./keymaps.nix ];
   options.nixvim.enable = mkEnableOption "Enable Nixvim";

@@ -21,22 +21,27 @@ in {
           {
             __unkeyed-1 = "<leader>w";
             group = "windows";
-            icon = " ";
+            icon = "";
+          }
+          {
+            __unkeyed-1 = "<leader>g";
+            group = "git";
+            icon = "";
           }
           # EO GROUPS
           # highlights search clear
           {
             __unkeyed-1 = "<Esc>";
-            __unkeyed-2 = "<cmd>nohlsearch<cr>";
+            __unkeyed-2 = ":nohlsearch<cr>";
             mode = "n";
             desc = "Remove search highlights";
           }
           # Exit term
-          {
-            __unkeyed-1 = "<Esc><Esc>";
-            __unkeyed-2 = "<C-\\><C-n>";
-            desc = "Exit terminal mode";
-          }
+          # {
+          #   __unkeyed-1 = "<Esc><Esc>";
+          #   __unkeyed-2 = "<C-\\><C-n>";
+          #   desc = "Exit terminal mode";
+          # }
           # Nav
           {
             __unkeyed-1 = "<C-h>";
@@ -80,17 +85,26 @@ in {
           # stay visual in indent 
           {
             __unkeyed-1 = "<gv";
-            key = "<";
+            __unkeyed-2 = "<";
             mode = "v";
             desc = "Indent left in visual mode";
           }
           {
             __unkeyed-1 = ">gv";
-            key = ">";
+            __unkeyed-2 = ">";
             mode = "v";
             desc = "Indent right in visual mode";
           }
 
+          # Lazy Git
+          {
+            __unkeyed-1 = "<leader>gg";
+            __unkeyed-2 = ":lua Snacks.lazygit.open()<CR>";
+            mode = "n";
+            desc = "Open Lazy Git";
+          }
+
+          # Telescope
         ];
       };
     };
