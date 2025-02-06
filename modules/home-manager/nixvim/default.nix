@@ -16,6 +16,7 @@ in {
     formatters.enable = true;
     files.enable = true;
     mini.enable = true;
+    snacks.enable = true;
     utils.enable = true;
     programs.nixvim = {
       enable = true;
