@@ -1,14 +1,10 @@
-{ config, lib, ... }:
-with lib;
-let cfg = config.mini;
-in {
-  options.mini = { enable = mkEnableOption "Enable Mini"; };
+{ lib, pkgs }:
+with lib; {
 
-  config = mkIf cfg.enable {
-    programs.nixvim.plugins.mini = {
-      enable = true;
-      modules = { icons = { }; };
-      mockDevIcons = true;
-    };
+  plugins.mini = {
+    enable = true;
+    modules = { icons.enabled = true; };
+    mockDevIcons = true;
   };
+  keymaps = [ ];
 }

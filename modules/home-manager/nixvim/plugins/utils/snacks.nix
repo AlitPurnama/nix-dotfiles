@@ -1,7 +1,6 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, lib }:
 with lib;
 let
-  cfg = config.snacks;
 
   terminalSettings = {
     position = "float";
@@ -98,56 +97,38 @@ let
     }
   ];
 in {
-  options.snacks = {
-    enable = mkEnableOption "Enable Snacks module";
-    enableDashboard = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable the Snacks dashboard";
-    };
-    enableLazygit = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable LazyGit integration";
-    };
-    enablePick = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable the pick feature";
-    };
-    enableScroll = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable the scroll feature";
-    };
-    enableTerminal = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Enable the terminal feature";
-    };
-  };
 
-  config = mkIf cfg.enable {
-    programs.nixvim.plugins.snacks = {
+  plugins = {
+    snacks = {
       enable = true;
       settings = {
-        animate.enabled = mkDefault true;
-        scroll.enabled = mkDefault cfg.enableScroll;
-        pick.enabled = mkDefault cfg.enablePick;
-        terminal = mkIf cfg.enableTerminal {
+        animate.enabled = true;
+        scroll.enabled = true;
+        pick.enabled = true;
+        terminal = {
           enabled = true;
           win = terminalSettings;
         };
-        dashboard = mkIf cfg.enableDashboard {
+        dashboard = {
           enabled = true;
           row = { __raw = "nil"; };
           col = { __raw = "nil"; };
           preset.keys = dashboardPresetKeys;
           sections = dashboardSections;
         };
-        lazygit = mkIf cfg.enableLazygit { enabled = true; };
-        notifier = { enabled = mkDefault true; };
+        lazygit = { enabled = true; };
+        notifier = { enabled = true; };
       };
     };
   };
+
+  keymaps = [
+    # Lazygit
+    {
+      __unkeyed-1 = "<leader>gg";
+      __unkeyed-2 = ":lua Snacks.lazygit.open()<cr>";
+      description = "Open Lazygit";
+      mode = "n";
+    }
+  ];
 }

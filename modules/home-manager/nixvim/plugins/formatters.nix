@@ -1,16 +1,14 @@
-{ config, lib, ... }:
+{ lib, pkgs }:
 with lib;
-let cfg = config.formatters;
+let sourcesFormat = { nixfmt.enable = true; };
 in {
-  options.formatters.enable = mkEnableOption "Enable Formatters";
-  config = mkIf cfg.enable {
-    programs.nixvim.plugins = {
-      none-ls = {
-        enable = true;
-        enableLspFormat = true;
-        sources.formatting = { nixfmt.enable = true; };
-      };
-      lsp-format.enable = true;
+  plugins = {
+    none-ls = {
+      enable = true;
+      enableLspFormat = true;
+      sources.formatting = sourcesFormat;
     };
+    lsp-format.enable = true;
   };
+  keymaps = [ ];
 }

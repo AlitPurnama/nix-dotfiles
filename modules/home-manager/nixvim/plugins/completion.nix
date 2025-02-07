@@ -1,15 +1,16 @@
-{ config, lib, ... }:
+{ lib, pkgs }:
 with lib;
-let cfg = config.completion;
+let
+
+  blinkSettings = { keymap = { preset = "super-tab"; }; };
 in {
-  options.completion.enable = mkEnableOption "Enable Completion";
-  config = mkIf cfg.enable {
-    programs.nixvim.plugins = {
-      blink-cmp = {
-        enable = true;
-        settings = { keymap = { preset = "super-tab"; }; };
-      };
-      blink-compat.enable = true;
+  plugins = {
+    blink-cmp = {
+      enable = true;
+      settings = blinkSettings;
     };
+    blink-compat.enable = true;
   };
+
+  keymaps = [ ];
 }
