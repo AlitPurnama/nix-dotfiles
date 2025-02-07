@@ -127,7 +127,7 @@ in {
     {
       __unkeyed-1 = "<leader>gg";
       __unkeyed-2 = ":lua Snacks.lazygit.open()<cr>";
-      description = "Open Lazygit";
+      desc = "Open Lazygit";
       mode = "n";
     }
   ];

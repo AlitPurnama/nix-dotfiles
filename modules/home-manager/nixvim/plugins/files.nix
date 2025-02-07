@@ -29,6 +29,6 @@ with lib; {
     __unkeyed-1 = "-";
     __unkeyed-2 = "<cmd>Oil<cr>";
     mode = "n";
-    description = "Open File Browser";
+    desc = "Open File Browser";
   }];
 }
