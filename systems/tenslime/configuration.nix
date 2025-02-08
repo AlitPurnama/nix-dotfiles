@@ -3,11 +3,11 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/nixos/kernel.nix
-    ./modules/nixos/stylix.nix
-    ./modules/nixos/podman.nix
-    ./modules/nixos/protonvpn.nix
-    ./modules/nixos/files.nix
+    ../../modules/nixos/kernel.nix
+    ../../modules/nixos/stylix.nix
+    ../../modules/nixos/podman.nix
+    ../../modules/nixos/protonvpn.nix
+    ../../modules/nixos/files.nix
   ];
 
   files.enable = true;

@@ -50,13 +50,15 @@
   };
 
   outputs = { nixpkgs, ... }@inputs: {
-    nixosConfigurations.tenslime = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./configuration.nix
-        inputs.home-manager.nixosModules.default
-        inputs.stylix.nixosModules.stylix
-      ];
+    nixosConfigurations = {
+      tenslime = nixpkgs.lib.nixosSystems {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./systems/tenslime/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.stylix.nixosModules.stylix
+        ];
+      };
     };
   };
 }
