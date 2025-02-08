@@ -51,7 +51,7 @@
 
   outputs = { nixpkgs, ... }@inputs: {
     nixosConfigurations = {
-      tenslime = nixpkgs.lib.nixosSystems {
+      tenslime = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./systems/tenslime/configuration.nix
