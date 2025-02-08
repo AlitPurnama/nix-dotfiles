@@ -1,8 +1,5 @@
 { lib, pkgs }:
-with lib;
-let
-
-  blinkSettings = { keymap = { preset = "super-tab"; }; };
+let blinkSettings = { keymap = { preset = "super-tab"; }; };
 in {
   plugins = {
     blink-cmp = {

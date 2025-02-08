@@ -1,6 +1,6 @@
-{ lib, pkgs }:
-with lib; {
+{ lib, pkgs }: {
   plugins = {
+    flash.enable = true;
     oil = {
       enable = true;
       settings = {

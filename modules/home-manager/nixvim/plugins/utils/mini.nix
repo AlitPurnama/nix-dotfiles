@@ -1,5 +1,4 @@
-{ lib, pkgs }:
-with lib; {
+{ lib, pkgs }: {
 
   plugins.mini = {
     enable = true;

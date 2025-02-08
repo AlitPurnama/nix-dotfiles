@@ -1,7 +1,5 @@
 { lib, pkgs }:
-with lib;
 let
-
   grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
     bash
     json

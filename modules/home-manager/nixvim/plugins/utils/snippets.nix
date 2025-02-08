@@ -1,5 +1,4 @@
-{ lib, pkgs }:
-with lib; {
+{ lib, pkgs }: {
 
   plugins = {
     luasnip.enable = true;

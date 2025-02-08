@@ -1,5 +1,4 @@
 { pkgs, lib }:
-with lib;
 let
 
   terminalSettings = {
@@ -53,7 +52,7 @@ let
     {
       section = "terminal";
       cmd =
-        "${pkgs.ascii-image-converter}/bin/ascii-image-converter ~/.dotfiles/icons/rmu.png -C -c";
+        "${pkgs.ascii-image-converter}/bin/ascii-image-converter ~/.dotfiles/images/icons/rmu.png -C -c";
       random = 10;
       pane = 2;
       indent = 4;
@@ -104,7 +103,43 @@ in {
       settings = {
         animate.enabled = true;
         scroll.enabled = true;
-        pick.enabled = true;
+        picker = {
+          enabled = true;
+          win = {
+            input.keys = {
+              "<a-s>" = {
+                __unkeyed-1 = "flash";
+                mode = [ "n" "i" ];
+              };
+              "s" = { __unkeyed-1 = "flash"; };
+            };
+          };
+          actions = {
+            flash = {
+              __raw = # lua
+                ''
+                  function(picker)
+                    require("flash").jump({
+                      pattern = "^",
+                      label = { after = { 0, 0 } },
+                      search = {
+                        mode = "search",
+                        exclude = {
+                          function(win)
+                            return vim.bo[vim.api.nvim_win_get_buf(win)].filetype ~= "snacks_picker_list"
+                          end,
+                        },
+                      },
+                      action = function(match)
+                        local idx = picker.list:row2idx(match.pos[1])
+                        picker.list:_move(idx, true, true)
+                      end,
+                  })
+                  end
+                '';
+            };
+          };
+        };
         terminal = {
           enabled = true;
           win = terminalSettings;
@@ -118,17 +153,16 @@ in {
         };
         lazygit = { enabled = true; };
         notifier = { enabled = true; };
+        bigfile = { enabled = true; };
+        indent.enabled = true;
+        input.enabled = true;
+        toggle.enabled = true;
+        scope.enabled = true;
       };
     };
   };
 
   keymaps = [
-    # Lazygit
-    {
-      __unkeyed-1 = "<leader>gg";
-      __unkeyed-2 = ":lua Snacks.lazygit.open()<cr>";
-      desc = "Open Lazygit";
-      mode = "n";
-    }
+
   ];
 }

@@ -1,12 +1,15 @@
 { lib, pkgs }:
-with lib;
 let
+  serverList = {
+    nixd.enable = true;
+    lua_ls.enable = true;
+  };
 in {
   plugins = {
     lsp = {
       enable = true;
       inlayHints = true;
-      servers.nixd.enable = true;
+      servers = serverList;
     };
     lspsaga = {
       enable = true;

@@ -2,6 +2,11 @@
   keymaps = [
     # GROUPS
     {
+      __unkeyed-1 = "<leader>f";
+      group = "files";
+      icon = "";
+    }
+    {
       __unkeyed-1 = "<leader>w";
       group = "windows";
       icon = "";
@@ -73,5 +78,42 @@
       desc = "Indent right in visual mode";
     }
 
+    # Lazygit
+    {
+      __unkeyed-1 = "<leader>gg";
+      __unkeyed-2 = ":lua Snacks.lazygit.open()<cr>";
+      desc = "Open Lazygit";
+      mode = "n";
+    }
+    # Terminal
+    {
+      __unkeyed-1 = "<leader>t";
+      __unkeyed-2 = ":lua Snacks.terminal()<cr>";
+      desc = "Open Terminal";
+      mode = "n";
+    }
+
+    # Smart find files
+    {
+      __unkeyed-1 = "<leader><space>";
+      __unkeyed-2 = ":lua Snacks.picker.smart()<cr>";
+      desc = "Smart Find Files";
+    }
+    # Find Buffer 
+    {
+      __unkeyed-1 = "<leader>fb";
+      __unkeyed-2 = ":lua Snacks.picker.buffers()<cr>";
+      desc = "Find buffers";
+    }
+    {
+      __unkeyed-1 = "<leader>fg";
+      __unkeyed-2 = ":lua Snacks.picker.grep()<cr>";
+      desc = "Grep";
+    }
+    {
+      __unkeyed-1 = "<leader>ff";
+      __unkeyed-2 = ":lua Snacks.picker.files()<cr>";
+      desc = "Find Files";
+    }
   ];
 }

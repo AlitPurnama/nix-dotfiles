@@ -1,5 +1,4 @@
 { lib, pkgs }:
-with lib;
 let sourcesFormat = { nixfmt.enable = true; };
 in {
   plugins = {
