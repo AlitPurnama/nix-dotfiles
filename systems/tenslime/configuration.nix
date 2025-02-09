@@ -8,7 +8,10 @@
     ../../modules/nixos/podman.nix
     ../../modules/nixos/protonvpn.nix
     ../../modules/nixos/files.nix
+    ../../modules/nixos/amd-gpu.nix
   ];
+
+  use-amd-gpu = true;
 
   files.enable = true;
 
@@ -98,7 +101,9 @@
     localNetworkGameTransfers.openFirewall = true;
     extraCompatPackages = with pkgs; [ proton-ge-bin ];
   };
+
   programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
