@@ -8,9 +8,9 @@
     ../../modules/home-manager/hyprpanel.nix
     ../../modules/home-manager/shell.nix
     ../../modules/home-manager/yazi.nix
-    ../../modules/home-manager/nvf
     ../../modules/home-manager/nixvim
     ../../modules/home-manager/obs.nix
+    ../../modules/home-manager/atuin.nix
   ];
 
   home.username = "alit";
@@ -27,6 +27,9 @@
     pfetch-rs
     ani-cli
     zathura
+    mangohud
+    glfw3-minecraft
+    wl-clipboard-rs
   ];
 
   home.file = { };
@@ -60,4 +63,5 @@
   yazi.enable = true;
   nixvim.enable = true;
   obs-studio.enable = true;
+  atuin.enable = true;
 }

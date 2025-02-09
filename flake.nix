@@ -40,7 +40,6 @@
     hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
 
     yazi.url = "github:sxyazi/yazi";
-    nvf.url = "github:notashelf/nvf";
 
     nixvim = {
       url = "github:nix-community/nixvim";
