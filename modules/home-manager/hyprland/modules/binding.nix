@@ -6,23 +6,31 @@ let
     else
         hyprctl dispatch killactive ""
     fi
+
   '';
+
+  cliphist = "${pkgs.cliphist}/bin/cliphist";
+  rofi = "${pkgs.rofi-wayland}/bin/rofi";
+  wl-copy = "${pkgs.wl-clipboard-rs}/bin/wl-copy";
 in {
-  config = {
-    bind = [
-      "$mod, Q, exec, ${dontExitSteam}/bin/dontExitSteam"
+  bind = [
+    "$mod, Q, exec, ${dontExitSteam}/bin/dontExitSteam"
 
-      "$mod, F, exec, firefox"
-      "$mod, R, exec, ${pkgs.rofi-wayland}/bin/rofi -show drun"
-      "$mod, T, exec, ghostty"
+    "$mod, F, exec, firefox"
+    #rofi
+    "$mod, R, exec, ${rofi} -show drun"
+    "$mod, V, exec, ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wl-copy}"
+    #open terminal
+    "$mod, T, exec, ghostty"
 
-      "$mod, Tab, workspace, m+1"
-      "$mod SHIFT, Tab, workspace, m-1"
-    ] ++ (builtins.concatLists (builtins.genList (i:
-      let ws = i + 1;
-      in [
-        "$mod, code:1${toString i}, workspace, ${toString ws}"
-        "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
-      ]) 9));
-  };
+    # Cycle through workspace
+    "$mod, Tab, workspace, m+1"
+    "$mod SHIFT, Tab, workspace, m-1"
+
+  ] ++ (builtins.concatLists (builtins.genList (i:
+    let ws = i + 1;
+    in [
+      "$mod, code:1${toString i}, workspace, ${toString ws}"
+      "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
+    ]) 9));
 }
