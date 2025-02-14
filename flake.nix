@@ -38,6 +38,7 @@
 
     hyprpanel.url = "github:Jas-SinghFSU/HyprPanel";
     hyprpanel.inputs.nixpkgs.follows = "nixpkgs";
+    pyprland = { url = "github:hyprland-community/pyprland"; };
 
     yazi.url = "github:sxyazi/yazi";
 
