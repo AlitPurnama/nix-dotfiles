@@ -11,6 +11,7 @@
     ../../modules/home-manager/nixvim
     ../../modules/home-manager/obs.nix
     ../../modules/home-manager/atuin.nix
+    ../../modules/home-manager/stylix.nix
   ];
 
   home.username = "alit";
@@ -30,6 +31,8 @@
     mangohud
     glfw3-minecraft
     wl-clipboard-rs
+    mullvad-browser
+    playerctl
   ];
 
   home.file = { };
