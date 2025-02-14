@@ -1,6 +1,6 @@
 { lib, inputs, pkgs, ... }:
-
-{
+let
+in {
   imports = [
     ./hardware-configuration.nix
     ../../modules/nixos/kernel.nix
@@ -51,9 +51,22 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.displayManager.sddm = {
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  #   settings = {
+  #     AutoLogin = {
+  #       Session = "hyprland.desktop";
+  #       User = "alit";
+  #     };
+  #   };
+  # };
+  services.displayManager.ly = {
     enable = true;
-    wayland.enable = true;
+    settings = {
+      # load = false;
+      # save = false;
+    };
   };
 
   services.xserver.xkb = {
@@ -107,7 +120,28 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  environment.systemPackages = with pkgs; [ git cloudflare-warp mpv ];
+  environment.systemPackages = with pkgs; [
+    git
+    cloudflare-warp
+    mpv
+    unzip
+    #KDE DOLPHIn
+    dolphin
+    kdePackages.qtwayland
+    libsForQt5.qt5.qtsvg
+    kio-fuse
+    libsForQt5.kio-extras
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.kimageformats
+    kdePackages.dolphin-plugins
+    kdePackages.qtimageformats
+    ffmpegthumbs
+    icoutils
+    wl-clipboard-rs
+    (callPackage ../../packages/cage-xtmapper.nix { })
+  ];
+
+  virtualisation.waydroid.enable = true;
 
   systemd.packages = [ pkgs.cloudflare-warp ]; # for warp-cli
   systemd.targets.multi-user.wants = [ "warp-svc.service" ];
