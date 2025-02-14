@@ -6,5 +6,7 @@
     "size 100% 100%, title:(XtMapper)"
     "move 0 0, title:(XtMapper)"
     "stayfocused, title:(XtMapper)"
+
+    "fullscreen, title:(Waydroid)"
   ];
 }

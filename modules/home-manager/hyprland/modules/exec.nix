@@ -4,7 +4,7 @@ let
   cliphist = "${pkgs.cliphist}/bin/cliphist";
 in {
   exec-once = [
-    "${wl-paste} --type text --watch ${cliphist}"
+    "${wl-paste} --type text --watch ${cliphist} store"
     "${wl-paste} --type image --watch ${cliphist} store"
   ];
 }
