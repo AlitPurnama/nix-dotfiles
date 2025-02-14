@@ -1,7 +1,7 @@
 { pkgs, ... }: {
 
   stylix.iconTheme = {
-    name = "Papirus-Dark";
+    enable = true;
     package = pkgs.catppuccin-papirus-folders;
     dark = "Papirus-Dark";
     light = "Papirus-Light";
