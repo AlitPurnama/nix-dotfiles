@@ -9,6 +9,7 @@ in {
     ../../modules/nixos/protonvpn.nix
     ../../modules/nixos/files.nix
     ../../modules/nixos/amd-gpu.nix
+    inputs.aagl.nixosModules.default
   ];
 
   use-amd-gpu = true;
@@ -154,6 +155,11 @@ in {
       "steam-unwrapped"
       "steam-run"
     ];
+
+  # Some Game (AAGL)
+  programs.anime-game-launcher.enable = true;
+  programs.honkers-railway-launcher.enable = true;
+  programs.sleepy-launcher.enable = true;
 
   system.stateVersion = "24.05"; # Did you read the comment?
 
