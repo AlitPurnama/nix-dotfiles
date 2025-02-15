@@ -85,6 +85,12 @@
       desc = "Open Lazygit";
       mode = "n";
     }
+
+    {
+      __unkeyed-1 = "<leader>gl";
+      __unkeyed-2 = ":lua Snacks.lazygit.log()<cr>";
+      desc = "Lazygit logs";
+    }
     # Terminal
     {
       __unkeyed-1 = "<leader>t";
