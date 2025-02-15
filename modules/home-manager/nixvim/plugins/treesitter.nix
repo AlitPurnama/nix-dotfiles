@@ -13,6 +13,9 @@ let
     vimdoc
     xml
     yaml
+    svelte
+    typescript
+    javascript
   ];
 
   treesitterSettings = {
