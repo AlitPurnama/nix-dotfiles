@@ -32,6 +32,10 @@ let
   allKeymaps =
     foldl' (acc: plugin: acc ++ (plugin.keymaps or [ ])) [ ] importedPlugins;
 
+  allExtraPlugins =
+    foldl' (acc: plugin: acc ++ (plugin.extraPlugins or [ ])) [ ]
+    importedPlugins;
+
 in {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
   options.nixvim.enable = mkEnableOption "Enable Nixvim";
@@ -51,6 +55,7 @@ in {
           };
         }
       ]; # Use merged plugins
+      extraPlugins = allExtraPlugins;
     };
   };
 }
