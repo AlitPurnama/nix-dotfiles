@@ -11,4 +11,5 @@
     size = 24;
   };
 
+  stylix.targets.plymouth.enable = false;
 }

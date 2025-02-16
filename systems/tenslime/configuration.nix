@@ -9,6 +9,7 @@ in {
     ../../modules/nixos/protonvpn.nix
     ../../modules/nixos/files.nix
     ../../modules/nixos/amd-gpu.nix
+    ../../modules/nixos/bootloader.nix
     inputs.aagl.nixosModules.default
   ];
 
@@ -34,10 +35,6 @@ in {
       ip = "149.22.84.149";
     };
   };
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "tenslime"; # Define your hostname.
 
