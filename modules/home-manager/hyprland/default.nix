@@ -11,7 +11,7 @@ let
   windowrulev2 =
     (import ./modules/windowrule.nix { inherit lib; }).windowrulev2;
 in {
-  imports = [ ./modules/pyprland.nix ];
+  imports = [ ./modules/pyprland.nix ./modules/hyprpaper.nix ];
   options.hyprland.enable = mkEnableOption "Enable Hyprland";
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
