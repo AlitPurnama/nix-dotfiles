@@ -20,6 +20,11 @@ in {
         "$mod, M, exec, pypr layout_center toggle"
         "$mod, left, exec, pypr layout_center prev"
         "$mod, right, exec, pypr layout_center next"
+        # le terminal
+        "$mod, A, exec, pypr toggle term"
+
+        # spotify
+        "$mod&SHIFT, S, exec, pypr toggle music"
       ];
       exec-once = [ "pypr &" ];
     };
@@ -35,6 +40,25 @@ in {
           offset = [ 0 30 ];
           next = "movefocus r";
           prev = "movefocus l";
+        };
+        scratchpads = {
+          term = {
+            animation = "fromTop";
+            command = "ghostty --class=com.ghostty.dropterm";
+            class = "com.ghostty.dropterm";
+            margin = 50;
+            size = "60% 50%";
+            lazy = true;
+            excludes = "*";
+          };
+          music = {
+            animation = "fromTop";
+            command = "spotify";
+            class = "Spotify";
+            lazy = true;
+            size = "90% 90%";
+            excludes = "*";
+          };
         };
       };
     };
