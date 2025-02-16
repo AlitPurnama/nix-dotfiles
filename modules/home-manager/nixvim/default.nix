@@ -36,6 +36,10 @@ let
     foldl' (acc: plugin: acc ++ (plugin.extraPlugins or [ ])) [ ]
     importedPlugins;
 
+  allExtraConfigLua =
+    foldl' (acc: plugin: acc + (plugin.extraConfigLua or "")) ""
+    importedPlugins;
+
 in {
   imports = [ inputs.nixvim.homeManagerModules.nixvim ];
   options.nixvim.enable = mkEnableOption "Enable Nixvim";
@@ -43,6 +47,7 @@ in {
   config = mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
+      performance.byteCompileLua = { enable = true; };
       inherit opts globals clipboard;
 
       plugins = mkMerge [
@@ -56,6 +61,7 @@ in {
         }
       ]; # Use merged plugins
       extraPlugins = allExtraPlugins;
+      extraConfigLua = allExtraConfigLua;
     };
   };
 }
