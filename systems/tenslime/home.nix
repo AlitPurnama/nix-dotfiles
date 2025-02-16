@@ -33,6 +33,7 @@
     wl-clipboard-rs
     mullvad-browser
     playerctl
+    jq
   ];
 
   home.file = { };
