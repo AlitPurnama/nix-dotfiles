@@ -16,6 +16,7 @@ let
     svelte
     typescript
     javascript
+    go
   ];
 
   treesitterSettings = {
