@@ -1,30 +1,28 @@
-{ config, pkgs, lib, ... }:with lib;
-let
-  cfg = config.shell;
-in{
+{ config, lib, ... }:
+with lib;
+let cfg = config.shell;
+in {
   options.shell = {
     enable = mkEnableOption "Enable Config";
+    enableZoxide = mkOption {
+      type = types.bool;
+      default = true;
+    };
+    enableStarship = mkOption {
+      type = types.bool;
+      default = true;
+    };
   };
   config = mkIf cfg.enable {
-    programs.zsh = {
-      enable = true;
-      enableCompletion = true;
-      autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
-      shellAliases = {
-        ls = "${pkgs.eza}/bin/eza --icons=always";
-	cd = "z";
-      };
-      history = {
-        ignorePatterns = [ "rm *" "pkill *" ];
-      };
-    };
     programs.zoxide = {
-      enable = true;
+      enable = cfg.enableZoxide;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
     };
     programs.starship = {
-      enable = true;
+      enable = cfg.enableStarship;
+      enableNushellIntegration = true;
     };
+
   };
 }
