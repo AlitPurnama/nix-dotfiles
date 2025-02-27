@@ -2,7 +2,7 @@
 
   stylix.iconTheme = {
     enable = true;
-    package = pkgs.catppuccin-papirus-folders;
+    package = pkgs.flat-remix-icon-theme;
     dark = "Papirus-Dark";
     light = "Papirus-Light";
   };
