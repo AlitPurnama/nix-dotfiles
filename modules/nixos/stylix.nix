@@ -1,9 +1,9 @@
 { pkgs, ... }: {
   stylix.enable = true;
-  stylix.image = ../../images/wallpapers/dragon.png;
-  stylix.polarity = "dark";
+  stylix.image = ../../images/wallpapers/wallhaven-wexo5q.png;
+  stylix.polarity = "light";
   stylix.base16Scheme =
-    "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    "${pkgs.base16-schemes}/share/themes/tokyo-city-light.yaml";
   stylix.fonts = { sizes.terminal = 18; };
   stylix.cursor = {
     package = pkgs.bibata-cursors;
