@@ -1,11 +1,11 @@
-{ inputs ,lib, config, ... }: with lib;
+{ inputs, lib, config, ... }:
+with lib;
 let
   cfg = config.firefox;
-  extensions = ( import ./extensions.nix { inherit inputs config; }).config.extensions;
-in
-{
-  options.firefox = { 
-    enable = mkEnableOption "Enable Firefox"; 
+  profile-default = (import ./profile-default.nix { inherit inputs; }).profile;
+in {
+  options.firefox = {
+    enable = mkEnableOption "Enable Firefox";
     profile = mkOption {
       type = lib.types.str;
       default = "tenslime";
@@ -16,9 +16,7 @@ in
   config = mkIf cfg.enable {
     programs.firefox = {
       enable = true;
-      profiles.${cfg.profile} = {
-        inherit extensions;
-      };
+      profiles.${cfg.profile} = profile-default;
     };
   };
 }
