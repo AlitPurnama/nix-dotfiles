@@ -9,7 +9,7 @@ in {
       enable = true;
       systemd.enable = true;
       hyprland.enable = true;
-      theme = "monochrome_vivid";
+      theme = "gruvbox";
       overlay.enable = true;
       overwrite.enable = true;
 
